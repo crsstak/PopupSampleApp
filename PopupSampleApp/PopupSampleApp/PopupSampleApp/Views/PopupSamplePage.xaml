@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PopupSampleApp.Views.PopupSamplePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    Title="MainPage"
+    prism:ViewModelLocator.AutowireViewModel="True">
+    <Grid>
+        <Button
+            Clicked="Button_Click"
+            HorizontalOptions="Center"
+            Text="ここをタップしたらポップアップ出るよ！"
+            VerticalOptions="Center" />
+        <StackLayout
+            x:Name="stackLayout"
+            BackgroundColor="#000000"
+            IsVisible="False"
+            Opacity="0.25">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="stackLayout_Tapped" />
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
+        <Grid
+            x:Name="popup"
+            BackgroundColor="#FFFFFF"
+            HeightRequest="400"
+            HorizontalOptions="Center"
+            IsVisible="False"
+            VerticalOptions="Center"
+            WidthRequest="300">
+            <Label HorizontalOptions="Center" VerticalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="ポップアップだよ" />
+                        <Span Text="{x:Static x:Environment.NewLine}" />
+                        <Span Text="ここをタップしてもポップアップは消えないよ" />
+                        <Span Text="{x:Static x:Environment.NewLine}" />
+                        <Span Text="外をタップすると消えるよ" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </Grid>
+    </Grid>
+</ContentPage>
